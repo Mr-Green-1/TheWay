@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from '../componentCss/Profile.module.css';
+import {Posts} from './Posts';
 
 export const Profile = () => {
     return (
@@ -9,6 +10,7 @@ export const Profile = () => {
                      src="https://sirenum.com/wp-content/uploads/2018/11/sirenum-staffing-header.jpg"
                      alt="profile picture"/>
             </div>
+            <Posts/>
         </div>
     )
 }
