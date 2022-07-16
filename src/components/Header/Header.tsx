@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './../componentCss/Header.module.css';
+import classes from './Header.module.css';
 
 export const Header = () => {
     return (

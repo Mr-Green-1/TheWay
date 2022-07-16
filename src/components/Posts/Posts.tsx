@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from '../componentCss/Posts.module.css'
-import {Post} from './Post';
+import classes from './Posts.module.css'
+import {Post} from '../post/Post';
 
 export const Posts = () => {
     return (

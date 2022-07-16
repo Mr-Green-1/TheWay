@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from '../componentCss/Profile.module.css';
-import {Posts} from './Posts';
+import classes from './Profile.module.css';
+import {Posts} from '../Posts/Posts';
 
 export const Profile = () => {
     return (
