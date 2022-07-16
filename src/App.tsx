@@ -1,12 +1,17 @@
 import React from 'react';
 import './App.css';
+import {Header} from './components/Header';
+import {Navigation} from './components/Navigation';
+import {Profile} from './components/Profile';
 
-function App() {
-  return (
-    <div className="App">
-        <h1>hello react</h1>
-    </div>
-  );
+const App = () => {
+    return (
+        <div className="App">
+            <Header/>
+            <Navigation/>
+            <Profile/>
+        </div>
+    );
 }
 
 export default App;
