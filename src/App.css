@@ -7,7 +7,7 @@
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
 }
-.App_Wrapper {
+.wrapper {
     grid-area: content;
     background-color: #f8f8ff;
 }
