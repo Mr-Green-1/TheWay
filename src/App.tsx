@@ -8,16 +8,16 @@ import {Profile} from './components/Profile/Profile';
 
 const App = () => {
     return (
-            <div className="App">
-                <Header/>
-                <Navigation/>
-                <div className="wrapper">
-                    <Routes>
+        <div className="App">
+            <Header/>
+            <Navigation/>
+            <div className="wrapper">
+                <Routes>
                     <Route path={'/Profile'} element={<Profile/>}/>
-                    <Route  path={'/Dialogs'} element={<Dialogs/>}/>
-                    </Routes>
-                </div>
+                    <Route path={'/Dialogs'} element={<Dialogs/>}/>
+                </Routes>
             </div>
+        </div>
     );
 }
 

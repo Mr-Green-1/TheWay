@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Posts.module.css'
-import {Post} from '../post/Post';
+import {Post} from './post/Post';
 
 export const Posts = () => {
 
@@ -10,7 +10,7 @@ export const Posts = () => {
         {id: 3, message: 'hi all', likesCount: 17}
     ];
 
-    let postsElements = Posts.map((p)=><Post key={1} message={p.message} likesCount={p.likesCount}/>);
+    let postsElements = Posts.map(( p ) => <Post key={1} message={p.message} likesCount={p.likesCount}/>);
 
     return (
         <div>
