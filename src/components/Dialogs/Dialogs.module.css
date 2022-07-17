@@ -1,4 +1,16 @@
-/*.dialog {*/
-/*    grid-area: content;*/
-/*    background-color: #f8f8ff;*/
-/*}*/
+.dialogs{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+.dialogItems {
+
+}
+.dialogItem {
+
+}
+.messages {
+
+}
+.message {
+
+}

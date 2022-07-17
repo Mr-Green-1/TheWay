@@ -1,4 +1,23 @@
 .nav {
     grid-area: nav;
     background-color: #a9a9a9;
+    padding: 20px;
+    color: #ffffff;
+}
+.activeLink {
+    color: #ffffff;
+    text-decoration: none;
+
+}
+.activeLink:active {
+    color: gold;
+
+}
+.activeLink:hover {
+    color: gold;
+
+}
+.activeLink:focus {
+    color: gold;
+
 }

@@ -14,7 +14,7 @@ const App = () => {
                 <div className="wrapper">
                     <Routes>
                     <Route path={'/Profile'} element={<Profile/>}/>
-                    <Route path={'/Dialogs'} element={<Dialogs/>}/>
+                    <Route  path={'/Dialogs'} element={<Dialogs/>}/>
                     </Routes>
                 </div>
             </div>
