@@ -5,16 +5,23 @@ import {Navigation} from './components/Navigation/Navigation';
 import {Dialogs} from './components/Dialogs/Dialogs';
 import {Route, Routes} from 'react-router-dom';
 import {Profile} from './components/Profile/Profile';
+import {RootStateType} from './index';
 
-const App = () => {
+
+type AppPropsType = {
+    state: RootStateType
+}
+
+const App = (props: AppPropsType) => {
     return (
         <div className="App">
             <Header/>
             <Navigation/>
             <div className="wrapper">
                 <Routes>
-                    <Route path={'/Profile'} element={<Profile/>}/>
-                    <Route path={'/Dialogs'} element={<Dialogs/>}/>
+                    <Route path={'/Profile'} element={<Profile posts={props.state.profilePage.posts}/>}/>
+                    <Route path={'/Dialogs'} element={<Dialogs dialogs={props.state.dialogsPage.dialogs}
+                                                               messages={props.state.dialogsPage.messages}/>}/>
                 </Routes>
             </div>
         </div>
