@@ -5,13 +5,15 @@ import {Navigation} from './components/Navigation/Navigation';
 import {Dialogs} from './components/Dialogs/Dialogs';
 import {Route, Routes} from 'react-router-dom';
 import {Profile} from './components/Profile/Profile';
-import {RootStateType} from './Redux/State';
+import {changeNewText, RootStateType} from './Redux/State';
 
 
 
 type AppPropsType = {
     state: RootStateType
     addPost: ( postText: string ) => void
+    newPostMessage: string
+    changeNewPostMessage: (newText: string) => void
 }
 
 const App = ( props: AppPropsType ) => {
@@ -22,7 +24,10 @@ const App = ( props: AppPropsType ) => {
             <div className="wrapper">
                 <Routes>
                     <Route path={'/Profile'} element={<Profile posts={props.state.profilePage.posts}
-                                                               addPost={props.addPost}/>}/>
+                                                               addPost={props.addPost}
+                                                               newPostMessage={props.state.profilePage.newPostMessage}
+                                                               changeNewPostMessage={changeNewText}/>}/>
+
                     <Route path={'/Dialogs'} element={<Dialogs dialogs={props.state.dialogsPage.dialogs}
                                                                messages={props.state.dialogsPage.messages}/>}/>
                 </Routes>
