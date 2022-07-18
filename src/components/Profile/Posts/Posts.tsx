@@ -11,13 +11,20 @@ export const Posts = (props: PostsPropsType) => {
 
     let postsElements = props.posts.map(( p ) => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
 
+    let newPostElement = React.createRef<HTMLTextAreaElement>();
+
+    let addPost = () => {
+        let text = newPostElement.current?.value;
+        alert(text);
+    }
+
     return (
         <div>
             <h3>My Posts</h3>
             <div>
-                <textarea></textarea>
+                <textarea ref={newPostElement}></textarea>
             </div>
-            <button>add post</button>
+            <button onClick={addPost}>add post</button>
             <div className={classes.posts}>
                 {postsElements}
             </div>
