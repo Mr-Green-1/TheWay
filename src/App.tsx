@@ -8,18 +8,21 @@ import {Profile} from './components/Profile/Profile';
 import {RootStateType} from './Redux/State';
 
 
+
 type AppPropsType = {
     state: RootStateType
+    addPost: ( postText: string ) => void
 }
 
-const App = (props: AppPropsType) => {
+const App = ( props: AppPropsType ) => {
     return (
         <div className="App">
             <Header/>
             <Navigation/>
             <div className="wrapper">
                 <Routes>
-                    <Route path={'/Profile'} element={<Profile posts={props.state.profilePage.posts}/>}/>
+                    <Route path={'/Profile'} element={<Profile posts={props.state.profilePage.posts}
+                                                               addPost={props.addPost}/>}/>
                     <Route path={'/Dialogs'} element={<Dialogs dialogs={props.state.dialogsPage.dialogs}
                                                                messages={props.state.dialogsPage.messages}/>}/>
                 </Routes>

@@ -5,6 +5,7 @@ import {PostsType} from '../../../Redux/State';
 
 type PostsPropsType = {
     posts: Array<PostsType>
+    addPost: ( postText: string ) => void
 }
 
 export const Posts = (props: PostsPropsType) => {
@@ -14,8 +15,10 @@ export const Posts = (props: PostsPropsType) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
     let addPost = () => {
-        let text = newPostElement.current?.value;
-        alert(text);
+        if (newPostElement.current){
+        props.addPost(newPostElement.current.value);
+        newPostElement.current.value = '';
+        }
     }
 
     return (
