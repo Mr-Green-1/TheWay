@@ -1,11 +1,3 @@
-let onChange = () => {
-    console.log('hi')
-}
-
-export const subscribe = ( callback: () => void ) => {
-    onChange = callback;
-}
-
 export type MessagesType = {
     id: number
     message: string
@@ -40,43 +32,62 @@ export type RootStateType = {
     sidebar: SidebarType
 }
 
-export let state: RootStateType = {
-    dialogsPage: {
-        dialogs: [
-            {id: 1, name: 'Alex'},
-            {id: 2, name: 'Anna'},
-            {id: 3, name: 'Jon'},
-            {id: 4, name: 'Mia'},
-            {id: 5, name: 'Mike'}
-        ],
-        messages: [
-            {id: 1, message: 'hi'},
-            {id: 2, message: 'how are you?'},
-            {id: 3, message: 'good'}
-        ],
-    },
-    profilePage: {
-        posts: [
-            {id: 1, message: 'hi , how are you?', likesCount: 12},
-            {id: 2, message: 'hi , good and you?', likesCount: 11},
-            {id: 3, message: 'hi all', likesCount: 17}
-        ],
-        newPostMessage: 'Alex',
-    },
-    sidebar: {}
-};
-
-export const addPost = ( newText: string ) => {
-    const newPost: PostsType = {
-        id: new Date().getTime(),
-        message: newText,
-        likesCount: 0
-    }
-    state.profilePage.posts.push(newPost);
-    onChange();
+export type StoreType = {
+    _state: RootStateType
+    changeNewText: ( newText: string ) => void
+    addPost: ( postText: string ) => void
+    _onChange: () => void
+    subscribe: ( callback: () => void ) => void
+    getState: () => RootStateType
 }
 
-export const changeNewText = ( newText: string ) => {
-    state.profilePage.newPostMessage = newText;
-    onChange();
+export const store: StoreType = {
+    _state: {
+        dialogsPage: {
+            dialogs: [
+                {id: 1, name: 'Alex'},
+                {id: 2, name: 'Anna'},
+                {id: 3, name: 'Jon'},
+                {id: 4, name: 'Mia'},
+                {id: 5, name: 'Mike'}
+            ],
+            messages: [
+                {id: 1, message: 'hi'},
+                {id: 2, message: 'how are you?'},
+                {id: 3, message: 'good'}
+            ],
+        },
+        profilePage: {
+            posts: [
+                {id: 1, message: 'hi , how are you?', likesCount: 12},
+                {id: 2, message: 'hi , good and you?', likesCount: 11},
+                {id: 3, message: 'hi all', likesCount: 17}
+            ],
+            newPostMessage: 'Alex',
+        },
+        sidebar: {}
+    },
+    changeNewText( newText: string ) {
+        this._state.profilePage.newPostMessage = newText;
+        this._onChange();
+    },
+    addPost( postText: string ) {
+        const newPost: PostsType = {
+            id: new Date().getTime(),
+            message: postText,
+            likesCount: 0
+        }
+        this._state.profilePage.posts.push(newPost);
+        this._onChange();
+    },
+    _onChange() {
+        console.log('state changed')
+    },
+    subscribe( callback ) {
+        this._onChange = callback;
+    },
+    getState() {
+        return this._state;
+    },
 }
+
