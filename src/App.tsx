@@ -7,11 +7,6 @@ import {Route, Routes} from 'react-router-dom';
 import {Profile} from './components/Profile/Profile';
 import {StoreType} from './Redux/State';
 
-// state: RootStateType
-// addPost: ( postText: string ) => void
-//     newPostMessage: string
-// changeNewPostMessage: (newText: string) => void
-
 
 type AppPropsType = {
     store: StoreType
@@ -25,7 +20,8 @@ const App: React.FC<AppPropsType> = ( props ) => {
             <Navigation/>
             <div className="wrapper">
                 <Routes>
-                    <Route path={'/Profile'} element={<Profile posts={state.profilePage.posts}
+                    <Route path={'/Profile'} element={<Profile dispatch={props.store.dispatch.bind(props.store)}
+                                                               posts={state.profilePage.posts}
                                                                addPost={props.store.addPost.bind(props.store)}
                                                                newPostMessage={state.profilePage.newPostMessage}
                                                                changeNewPostMessage={props.store.changeNewText.bind(props.store)}/>}/>
