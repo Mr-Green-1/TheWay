@@ -1,19 +1,31 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import classes from './Dialogs.module.css'
 import {DialogItem} from './DialogsItem/DialogItem';
 import {Messages} from './Messages/Messages';
-import {DialogsType, MessagesType} from '../../Redux/State';
+import { addPostAC, changePostAC,StoreType} from '../../Redux/State';
 
 type DialogsPropsType = {
-    dialogs: Array<DialogsType>
-    messages: Array<MessagesType>
+    store: StoreType
 }
 
-export const Dialogs = (props: DialogsPropsType) => {
+export const Dialogs = ( props: DialogsPropsType ) => {
 
+    let state = props.store.getState().dialogsPage;
 
-    let dialogsElements = props.dialogs.map(( d ) => <DialogItem name={d.name} id={d.id}/>)
-    let messagesElements = props.messages.map(( m ) => <Messages message={m.message}/>)
+    let dialogsElements = state.dialogs.map(( d ) => <DialogItem name={d.name} id={d.id}/>);
+
+    let messagesElements = state.messages.map(( m ) => <Messages message={m.message}/>);
+
+    let newMessageBody = state.newMessageBody;
+
+    let onSendMassageClick = () => {
+        props.store.dispatch(addPostAC(state.newMessageBody));
+    }
+
+    let onNewMessageChange = ( e: ChangeEvent<HTMLTextAreaElement> ) => {
+        let newText = e.target.value;
+        props.store.dispatch(changePostAC(newText));
+    }
 
     return (
         <div className={classes.dialogs}>
@@ -21,7 +33,18 @@ export const Dialogs = (props: DialogsPropsType) => {
                 {dialogsElements}
             </div>
             <div className={classes.messages}>
-                {messagesElements}
+                <div>{messagesElements}</div>
+                <div>
+                    <div>
+                        <textarea value={newMessageBody}
+                                  placeholder={'Enter your massage'}
+                                  onChange={onNewMessageChange}>
+                        </textarea>
+                    </div>
+                    <div>
+                        <button onClick={onSendMassageClick}>send</button>
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -22,6 +22,7 @@ export type ProfilePageType = {
 export type DialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessagesType>
+    newMessageBody: string
 }
 
 export type SidebarType = {}
@@ -39,20 +40,23 @@ export type StoreType = {
     _onChange: () => void
     subscribe: ( callback: () => void ) => void
     getState: () => RootStateType
-    dispatch: (action: AddPostActionType | ChangeNewTextActionType) => void
+    dispatch: (action: ActionTypes) => void
 }
 
-type AddPostActionType = {
-    type: "ADD-POST"
-    postText: string
-}
+export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changePostAC>;
 
-type ChangeNewTextActionType = {
-    type: "CHANGE-NEW-TEXT"
-    newText: string
+export const  addPostAC = (postText: string) => {
+    return {
+        type: "ADD-POST",
+        postText: postText
+    } as const
 }
-
-export type ActionTypes = AddPostActionType | ChangeNewTextActionType;
+export const  changePostAC = (newText: string) => {
+    return {
+        type: "CHANGE-NEW-TEXT",
+        newText: newText
+    } as const
+}
 
 export const store: StoreType = {
     _state: {
@@ -69,6 +73,7 @@ export const store: StoreType = {
                 {id: 2, message: 'how are you?'},
                 {id: 3, message: 'good'}
             ],
+            newMessageBody: ''
         },
         profilePage: {
             posts: [
@@ -76,7 +81,7 @@ export const store: StoreType = {
                 {id: 2, message: 'hi , good and you?', likesCount: 11},
                 {id: 3, message: 'hi all', likesCount: 17}
             ],
-            newPostMessage: '',
+            newPostMessage: ''
         },
         sidebar: {}
     },
@@ -115,6 +120,6 @@ export const store: StoreType = {
             this._state.profilePage.newPostMessage = action.newText;
             this._onChange();
         }
-    }
+    },
 }
 

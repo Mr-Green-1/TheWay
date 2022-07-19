@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import classes from './Posts.module.css'
 import {Post} from './post/Post';
-import {ActionTypes, PostsType} from '../../../Redux/State';
+import {ActionTypes, addPostAC, PostsType} from '../../../Redux/State';
 
 type PostsPropsType = {
     posts: Array<PostsType>
@@ -16,7 +16,7 @@ export const Posts = ( props: PostsPropsType ) => {
     let postsElements = props.posts.map(( p ) => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
 
     const addPost = () => {
-        props.dispatch({type: "ADD-POST", postText: props.newPostMessage});
+        props.dispatch(addPostAC(props.newPostMessage));
         props.changeNewPostMessage('')
     }
 
