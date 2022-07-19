@@ -1,4 +1,10 @@
-import {renderTree} from '../renderTree';
+let onChange = () => {
+    console.log('hi')
+}
+
+export const subscribe = ( callback: () => void ) => {
+    onChange = callback;
+}
 
 export type MessagesType = {
     id: number
@@ -60,17 +66,17 @@ export let state: RootStateType = {
     sidebar: {}
 };
 
-export const addPost = (newText: string) => {
+export const addPost = ( newText: string ) => {
     const newPost: PostsType = {
         id: new Date().getTime(),
         message: newText,
         likesCount: 0
     }
     state.profilePage.posts.push(newPost);
-    renderTree(state);
+    onChange();
 }
 
-export const changeNewText = (newText: string) => {
+export const changeNewText = ( newText: string ) => {
     state.profilePage.newPostMessage = newText;
-    renderTree(state);
+    onChange();
 }
