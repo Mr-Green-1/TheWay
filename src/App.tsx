@@ -5,7 +5,7 @@ import {Navigation} from './components/Navigation/Navigation';
 import {Dialogs} from './components/Dialogs/Dialogs';
 import {Route, Routes} from 'react-router-dom';
 import {Profile} from './components/Profile/Profile';
-import {StoreType} from './Redux/State';
+import {StoreType} from './components/Redux/State';
 
 
 type AppPropsType = {

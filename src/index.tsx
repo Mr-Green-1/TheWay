@@ -1,5 +1,5 @@
 import './index.css';
-import {store} from './Redux/State';
+import {store} from './components/Redux/State';
 import {renderTree} from './renderTree';
 
 
