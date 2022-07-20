@@ -2,7 +2,8 @@ import React, {ChangeEvent} from 'react';
 import classes from './Dialogs.module.css'
 import {DialogItem} from './DialogsItem/DialogItem';
 import {Messages} from './Messages/Messages';
-import {addMessageBodyActionCreator, StoreType, updateNewMessageBodyActionCreator} from '../../Redux/State';
+import {StoreType} from '../../Redux/State';
+import {addMessageBodyActionCreator, updateNewMessageBodyActionCreator} from '../../Redux/dialogsReducer';
 
 type DialogsPropsType = {
     store: StoreType
