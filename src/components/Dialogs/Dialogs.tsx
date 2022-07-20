@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import classes from './Dialogs.module.css'
 import {DialogItem} from './DialogsItem/DialogItem';
 import {Messages} from './Messages/Messages';
-import { addPostAC, changePostAC,StoreType} from '../../Redux/State';
+import {addMessageBodyActionCreator, StoreType, updateNewMessageBodyActionCreator} from '../../Redux/State';
 
 type DialogsPropsType = {
     store: StoreType
@@ -19,12 +19,12 @@ export const Dialogs = ( props: DialogsPropsType ) => {
     let newMessageBody = state.newMessageBody;
 
     let onSendMassageClick = () => {
-        props.store.dispatch(addPostAC(state.newMessageBody));
+        props.store.dispatch(addMessageBodyActionCreator(state.newMessageBody));
     }
 
     let onNewMessageChange = ( e: ChangeEvent<HTMLTextAreaElement> ) => {
-        let newText = e.target.value;
-        props.store.dispatch(changePostAC(newText));
+        let body = e.target.value;
+        props.store.dispatch(updateNewMessageBodyActionCreator(body));
     }
 
     return (
