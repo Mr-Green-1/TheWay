@@ -1,4 +1,4 @@
-import {RootActionTypes, SidebarType} from './State';
+import {RootActionTypes, SidebarType} from '../State';
 
 export const sidebarReducer = (state: SidebarType, action: RootActionTypes): SidebarType=> {
 

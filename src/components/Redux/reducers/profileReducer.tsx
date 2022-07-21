@@ -1,4 +1,4 @@
-import {PostsType, ProfilePageType, RootActionTypes} from './State';
+import {PostsType, ProfilePageType, RootActionTypes} from '../State';
 
 const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
@@ -9,7 +9,7 @@ const profileReducer = ( state: ProfilePageType, action: RootActionTypes ): Prof
         case ADD_POST:
             let newPost: PostsType = {
                 id: new Date().getTime(),
-                message: action.postText,
+                message: state.newPostMessage,
                 likesCount: 0
             };
             state.posts.push(newPost);
@@ -23,10 +23,9 @@ const profileReducer = ( state: ProfilePageType, action: RootActionTypes ): Prof
     }
 }
 
-export const addPostActionCreator = ( postText: string ) => {
+export const addPostActionCreator = ( ) => {
     return {
-        type: 'ADD-POST',
-        postText: postText
+        type: 'ADD-POST'
     } as const
 }
 export const updateNewPostTextActionCreator = ( newText: string ) => {

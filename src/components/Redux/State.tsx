@@ -1,6 +1,6 @@
-import profileReducer, {ProfileActionsType} from './profileReducer';
-import dialogsReducer, {DialogsActionsType} from './dialogsReducer';
-import sidebarReducer from './sidebarReducer';
+import profileReducer, {ProfileActionsType} from './reducers/profileReducer';
+import dialogsReducer, {DialogsActionsType} from './reducers/dialogsReducer';
+import sidebarReducer from './reducers/sidebarReducer';
 
 
 export type MessagesType = {
@@ -48,8 +48,7 @@ export type StoreType = {
     dispatch: (action: RootActionTypes) => void
 }
 
-export type RootActionTypes = ProfileActionsType
-    | DialogsActionsType
+export type RootActionTypes = ProfileActionsType | DialogsActionsType;
 
 export const store: StoreType = {
     _state: {
@@ -107,29 +106,3 @@ export const store: StoreType = {
         this._onChange();
     },
 }
-
-export const addPostActionCreator = (postText: string) => {
-    return {
-        type: "ADD-POST",
-        postText: postText
-    } as const
-};
-export const updateNewPostTextActionCreator = (newText: string) => {
-    return  {
-        type: "CHANGE-NEW-POST",
-        newText: newText
-    } as const
-};
-
-export const  addMessageBodyActionCreator = (bodyText: string) => {
-    return  {
-        type: "SEND-MESSAGE",
-        bodyText: bodyText
-    } as const
-};
-export const  updateNewMessageBodyActionCreator = (body: string) => {
-    return  {
-        type: "UPDATE-NEW-MESSAGE-BODY",
-        body: body
-    } as const
-};
