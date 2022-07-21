@@ -20,8 +20,8 @@ const App: React.FC<AppPropsType> = ( props ) => {
             <Navigation/>
             <div className="wrapper">
                 <Routes>
-                    <Route path={'/Profile'} element={<Profile store={props.store}/>}/>
-                    <Route path={'/Dialogs'} element={<DialogsContainer store={props.store}/>}/>
+                    <Route path={'/Profile'} element={<Profile/>}/>
+                    <Route path={'/Dialogs'} element={<DialogsContainer}/>
                 </Routes>
             </div>
         </div>

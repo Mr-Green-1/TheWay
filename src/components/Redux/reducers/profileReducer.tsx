@@ -23,7 +23,7 @@ const profileReducer = ( state: ProfilePageType, action: RootActionTypes ): Prof
     }
 }
 
-export const addPostActionCreator = ( ) => {
+export const addPostActionCreator = () => {
     return {
         type: 'ADD-POST'
     } as const
