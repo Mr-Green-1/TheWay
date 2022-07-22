@@ -1,8 +1,24 @@
 import './index.css';
 import {store} from './components/Redux/State';
-import {renderTree} from './renderTree';
+import React from 'react';
+import {BrowserRouter} from 'react-router-dom';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
 
 
-store.subscribe(renderTree);
-renderTree();
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    </BrowserRouter>,
+    document.getElementById('root')
+);
+
+reportWebVitals();
+
+
+
 

@@ -3,7 +3,15 @@ import dialogsReducer, {DialogsActionsType} from './reducers/dialogsReducer';
 import sidebarReducer from './reducers/sidebarReducer';
 
 
+export type MessagesType = {
+    id: number
+    message: string
+}
 
+export type DialogsType = {
+    id: number
+    name: string
+}
 
 export type PostsType = {
     id: number
@@ -11,11 +19,16 @@ export type PostsType = {
     likesCount: number
 }
 
-export type ProfilePageType = {
+ export type ProfilePageType = {
     newPostMessage: string
     posts: Array<PostsType>
 }
 
+export type DialogsPageType = {
+    dialogs: Array<DialogsType>
+    messages: Array<MessagesType>
+    newMessageBody: string
+}
 
 export type SidebarType = {}
 
@@ -37,7 +50,7 @@ export type StoreType = {
 
 export type RootActionTypes = ProfileActionsType | DialogsActionsType;
 
-export const store: StoreType = {
+    const store: StoreType = {
     _state: {
         dialogsPage: {
             dialogs: [

@@ -2,18 +2,9 @@ import React from 'react';
 import {Posts} from './Posts';
 import {addPostActionCreator, updateNewPostTextActionCreator} from '../../Redux/reducers/profileReducer';
 import {connect} from 'react-redux';
+import {RootActionTypes} from '../../Redux/State';
 import {RootReducerType} from '../../Redux/reduxStore';
-import {Dispatch} from 'redux';
 
-type mapStateToPropsType = {
-    posts:
-        newPostMessage:
-}
-
-type mapDispatchToPropsType = {
-    addPost:
-        changeNewPostMessage:
-}
 
 
 let mapStateToProps = ( state: RootReducerType ) => {
@@ -22,7 +13,7 @@ let mapStateToProps = ( state: RootReducerType ) => {
         newPostMessage: state.profilePage.newPostMessage
     }
 }
-let mapDispatchToProps = ( dispatch: Dispatch ) => {
+let mapDispatchToProps = ( dispatch: (action: RootActionTypes) => void ) => {
     return {
         addPost: () => {dispatch(addPostActionCreator());},
         changeNewPostMessage: (newText: string)=> {dispatch(updateNewPostTextActionCreator(newText));}
