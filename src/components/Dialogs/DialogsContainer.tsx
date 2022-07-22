@@ -2,17 +2,42 @@ import React from 'react';
 import {addMessageBodyActionCreator, updateNewMessageBodyActionCreator} from '../Redux/reducers/dialogsReducer';
 import {Dialogs} from './Dialogs';
 import {connect} from 'react-redux';
-import {DialogsPageType, RootActionTypes} from '../Redux/State';
+import {RootReducerType} from '../Redux/reduxStore';
+import {Dispatch} from 'redux';
+import {DialogsPageType} from '../Redux/State';
+
+type MessagesType = {
+    id: number
+    message: string
+}
+
+type DialogsType = {
+    id: number
+    name: string
+}
+
+type DialogsPageType = {
+    dialogs: Array<DialogsType>
+    messages: Array<MessagesType>
+    newMessageBody: string
+}
 
 
-let mapStateToProps = ( state: DialogsPageType ) => {
+type mapStateToPropsType = {
+    dialog: DialogsPageType
+}
+
+type mapDispatchToProps = {}
+
+
+let mapStateToProps = ( state: RootReducerType ): mapStateToPropsType => {
 
     return {
-        dialog: state.dialogs
+        dialog: state.dialogsPage.dialogs
     }
 }
 
-let mapDispatchToProps = ( dispatch: ( action: RootActionTypes ) => void ) => {
+let mapDispatchToProps = ( dispatch: Dispatch ) => {
 
     return {
         onSendMassageClick: ( bodyText: string ) => {

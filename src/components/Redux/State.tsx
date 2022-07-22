@@ -3,15 +3,7 @@ import dialogsReducer, {DialogsActionsType} from './reducers/dialogsReducer';
 import sidebarReducer from './reducers/sidebarReducer';
 
 
-export type MessagesType = {
-    id: number
-    message: string
-}
 
-export type DialogsType = {
-    id: number
-    name: string
-}
 
 export type PostsType = {
     id: number
@@ -24,11 +16,6 @@ export type ProfilePageType = {
     posts: Array<PostsType>
 }
 
-export type DialogsPageType = {
-    dialogs: Array<DialogsType>
-    messages: Array<MessagesType>
-    newMessageBody: string
-}
 
 export type SidebarType = {}
 

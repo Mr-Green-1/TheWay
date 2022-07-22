@@ -4,6 +4,8 @@ const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
 
 
+
+
 const profileReducer = ( state: ProfilePageType, action: RootActionTypes ): ProfilePageType => {
     switch (action.type) {
         case ADD_POST:
