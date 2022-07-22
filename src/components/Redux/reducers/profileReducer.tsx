@@ -12,15 +12,18 @@ const profileReducer = ( state: ProfilePageType, action: RootActionTypes ): Prof
                 message: state.newPostMessage,
                 likesCount: 0
             };
-            let stateCopy = {...state};
-            stateCopy.posts = [...state.posts];
-            stateCopy.posts.push(newPost);
-            stateCopy.newPostMessage = '';
+            let stateCopy = {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostMessage: ''
+            };
             return stateCopy;
         }
         case CHANGE_NEW_POST: {
-            let stateCopy = {...state}
-            stateCopy.newPostMessage = action.newText;
+            let stateCopy = {
+                ...state,
+                newPostMessage: action.newText
+            }
             return stateCopy;
         }
         default:
