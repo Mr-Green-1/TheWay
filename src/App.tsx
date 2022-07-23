@@ -4,13 +4,12 @@ import {Header} from './components/Header/Header';
 import {Navigation} from './components/Navigation/Navigation';
 import {Route, Routes} from 'react-router-dom';
 import {Profile} from './components/Profile/Profile';
-import {StoreType} from './components/Redux/State';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import {Users} from './components/Users/Users';
+import UserContainer from './components/Users/UserContainer';
 
 
 type AppPropsType = {
-    store: StoreType
+
 }
 
 const App: React.FC<AppPropsType> = ( props ) => {
@@ -23,7 +22,7 @@ const App: React.FC<AppPropsType> = ( props ) => {
                 <Routes>
                     <Route path={'/Profile'} element={<Profile/>}/>
                     <Route path={'/Dialogs'} element={<DialogsContainer/>}/>
-                    <Route path={'/Users'} element={<UsersC/>}/>
+                    <Route path={'/Users'} element={<UserContainer/>}/>
                 </Routes>
             </div>
         </div>
