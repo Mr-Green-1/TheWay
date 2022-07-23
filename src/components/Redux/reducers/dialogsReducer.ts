@@ -1,8 +1,15 @@
-import {RootActionTypes} from '../State';
-
 const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
 
+type MessagesType = {
+    id: number
+    message: string
+}
+
+type DialogsType = {
+    id: number
+    name: string
+}
 
 let initialState = {
         dialogs: [
@@ -11,16 +18,18 @@ let initialState = {
             {id: 3, name: 'Jon'},
             {id: 4, name: 'Mia'},
             {id: 5, name: 'Mike'}
-        ],
+        ] as Array<DialogsType>,
         messages: [
             {id: 1, message: 'hi'},
             {id: 2, message: 'how are you?'},
             {id: 3, message: 'good'}
-        ],
-        newMessageBody: ''
+        ] as Array<MessagesType>,
+        newMessageBody: '',
 };
 
-const dialogsReducer = ( state = initialState, action: RootActionTypes ) => {
+export type DialogInitialState = typeof initialState;
+
+const dialogsReducer = ( state: DialogInitialState = initialState, action: DialogsActionsType ): DialogInitialState => {
 
     switch (action.type) {
         case
@@ -55,8 +64,8 @@ export const updateNewMessageBodyActionCreator = ( body: string ) => {
     } as const
 }
 
-type AddMessageBodyActionCreatorType = ReturnType<typeof addMessageBodyActionCreator>
-type  UpdateNewMessageBodyActionCreatorType = ReturnType<typeof updateNewMessageBodyActionCreator>
+export type AddMessageBodyActionCreatorType = ReturnType<typeof addMessageBodyActionCreator>
+export type  UpdateNewMessageBodyActionCreatorType = ReturnType<typeof updateNewMessageBodyActionCreator>
 
 export type DialogsActionsType = AddMessageBodyActionCreatorType | UpdateNewMessageBodyActionCreatorType
 

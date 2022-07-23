@@ -2,37 +2,30 @@ const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 
-let initialState = {
-    users: [
-        {
-            id: 1,
-            photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMlFrXT2YtlYq7JPbi2A6FYdEVHn1nExbAGg&usqp=CAU',
-            fullName: 'alex',
-            status: 'boss',
-            location: {city: 'New York', country: 'USA'},
-            followed: false
-        },
-        {
-            id: 2,
-            photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMlFrXT2YtlYq7JPbi2A6FYdEVHn1nExbAGg&usqp=CAU',
-            fullName: 'jon',
-            status: 'good man',
-            location: {city: 'London', country: 'England'},
-            followed: true
-        },
-        {
-            id: 3,
-            photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMlFrXT2YtlYq7JPbi2A6FYdEVHn1nExbAGg&usqp=CAU',
-            fullName: 'mike',
-            status: 'sleep',
-            location: {city: 'Berlin', country: 'German'},
-            followed: false
-        }
-    ],
+export type UserLocationType = {
+    city: string
+    country: string
+}
+
+export type UserType = {
+    id: number
+    photoUrl: string
+    fullName: string
+    status: string
+    location: UserLocationType
+    followed: boolean
+}
+
+export type UsersInitialStateType = {
+    users: Array<UserType>
+}
+
+ const initialState: UsersInitialStateType = {
+    users: [],
 };
 
 
-const userReducer = ( state = initialState, action: UsersActionType ) => {
+const userReducer = ( state: UsersInitialStateType = initialState, action: UsersActionType ): UsersInitialStateType => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -62,13 +55,13 @@ const userReducer = ( state = initialState, action: UsersActionType ) => {
     }
 }
 
-export const followActionCreator = ( userId: any ) => {
+export const followActionCreator = ( userId: number ) => {
     return {type: 'FOLLOW', userId} as const
 };
-export const unFollowActionCreator = ( userId: any ) => {
+export const unFollowActionCreator = ( userId: number ) => {
     return {type: 'UNFOLLOW', userId} as const
 };
-export const setUsersActionCreator = ( users: any ) => {
+export const setUsersActionCreator = ( users: Array<UserType> ) => {
     return {type: 'SET_USERS', users} as const
 };
 

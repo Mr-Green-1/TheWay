@@ -1,19 +1,16 @@
-import {combineReducers, createStore} from 'redux';
+import {combineReducers, legacy_createStore as createStore} from 'redux';
 import profileReducer from './reducers/profileReducer';
 import dialogsReducer from './reducers/dialogsReducer';
-import sidebarReducer from './reducers/sidebarReducer';
 import userReducer from './reducers/usersReducer';
 
-let rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
-    sidebar: sidebarReducer,
+    //sidebar: sidebarReducer,
     usersPage: userReducer
 
 });
 
-export type RootReducerType = ReturnType<typeof rootReducer>
+export type RootReducerType = ReturnType<typeof rootReducer>;
 
-let reducersStore = createStore(rootReducer);
-
-export default reducersStore;
+export const reducersStore = createStore(rootReducer);

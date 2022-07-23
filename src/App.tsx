@@ -8,11 +8,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UserContainer from './components/Users/UserContainer';
 
 
-type AppPropsType = {
-
-}
-
-const App: React.FC<AppPropsType> = ( props ) => {
+const App = () => {
 
     return (
         <div className="App">

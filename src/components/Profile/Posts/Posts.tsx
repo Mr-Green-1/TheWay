@@ -1,7 +1,12 @@
 import React, {ChangeEvent} from 'react';
 import classes from './Posts.module.css'
 import {Post} from './post/Post';
-import {PostsType} from '../../Redux/State';
+
+type PostsType = {
+    id: number
+    message: string
+    likesCount: number
+}
 
 type PostsPropsType = {
     changeNewPostMessage: ( newText: string ) => void

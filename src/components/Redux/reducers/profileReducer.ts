@@ -1,9 +1,18 @@
-import {RootActionTypes} from '../State';
-
 const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
 
-let initialState = {
+type PostsType = {
+    id: number
+    message: string
+    likesCount: number
+}
+
+type ProfileInitialStateType = {
+    newPostMessage: string
+    posts: Array<PostsType>
+}
+
+let initialState: ProfileInitialStateType = {
     posts: [
         {id: 1, message: 'hi , how are you?', likesCount: 12},
         {id: 2, message: 'hi , good and you?', likesCount: 11},
@@ -13,7 +22,7 @@ let initialState = {
 }
 
 
-const profileReducer = ( state = initialState, action: RootActionTypes ) => {
+const profileReducer = ( state = initialState, action: ProfileActionsType ): ProfileInitialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -50,8 +59,8 @@ export const updateNewPostTextActionCreator = ( newText: string ) => {
     } as const
 }
 
-type AddPostActionCreatorType = ReturnType<typeof addPostActionCreator>
-type UpdateNewPostTextActionCreatorType = ReturnType<typeof updateNewPostTextActionCreator>
+export type AddPostActionCreatorType = ReturnType<typeof addPostActionCreator>
+export type UpdateNewPostTextActionCreatorType = ReturnType<typeof updateNewPostTextActionCreator>
 
 export type ProfileActionsType = AddPostActionCreatorType | UpdateNewPostTextActionCreatorType
 
