@@ -6,6 +6,7 @@ import {Route, Routes} from 'react-router-dom';
 import {Profile} from './components/Profile/Profile';
 import {StoreType} from './components/Redux/State';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import {Users} from './components/Users/Users';
 
 
 type AppPropsType = {
@@ -21,7 +22,8 @@ const App: React.FC<AppPropsType> = ( props ) => {
             <div className="wrapper">
                 <Routes>
                     <Route path={'/Profile'} element={<Profile/>}/>
-                    <Route path={'/Dialogs'} element={<DialogsContainer}/>
+                    <Route path={'/Dialogs'} element={<DialogsContainer/>}/>
+                    <Route path={'/Users'} element={<UsersC/>}/>
                 </Routes>
             </div>
         </div>

@@ -1,30 +1,37 @@
-import {PostsType, ProfilePageType, RootActionTypes} from '../State';
+import {RootActionTypes} from '../State';
 
 const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
 
+let initialState = {
+    posts: [
+        {id: 1, message: 'hi , how are you?', likesCount: 12},
+        {id: 2, message: 'hi , good and you?', likesCount: 11},
+        {id: 3, message: 'hi all', likesCount: 17}
+    ],
+    newPostMessage: 'Alex'
+}
 
-const profileReducer = ( state: ProfilePageType, action: RootActionTypes ): ProfilePageType => {
+
+const profileReducer = ( state = initialState, action: RootActionTypes ) => {
     switch (action.type) {
         case ADD_POST: {
-            let newPost: PostsType = {
+            let newPost = {
                 id: new Date().getTime(),
                 message: state.newPostMessage,
                 likesCount: 0
             };
-            let stateCopy = {
+            return {
                 ...state,
                 posts: [...state.posts, newPost],
                 newPostMessage: ''
             };
-            return stateCopy;
         }
         case CHANGE_NEW_POST: {
-            let stateCopy = {
+            return {
                 ...state,
                 newPostMessage: action.newText
             }
-            return stateCopy;
         }
         default:
             return state;

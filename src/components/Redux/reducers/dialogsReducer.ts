@@ -1,4 +1,4 @@
-import {DialogsPageType, RootActionTypes} from '../State';
+import {RootActionTypes} from '../State';
 
 const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
