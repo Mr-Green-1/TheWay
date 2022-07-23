@@ -1,13 +1,12 @@
-import {
-    addMessageBodyActionCreator,
-    DialogInitialState,
-    updateNewMessageBodyActionCreator
+import {addMessageBodyActionCreator,
+        DialogInitialState,
+        updateNewMessageBodyActionCreator
 } from '../Redux/reducers/dialogsReducer';
 import {Dialogs} from './Dialogs';
 import {connect} from 'react-redux';
 import {RootReducerType} from '../Redux/reduxStore';
 import {compose, Dispatch} from 'redux';
-import {ComponentType, FC} from 'react';
+import {FC} from 'react';
 
 type mapStateToPropsType = {
     dialogsPage: DialogInitialState
